@@ -21,4 +21,5 @@ app.use("/api",orderRoute)
 app.get('/', (req:Request, res:Response) => {
   res.send('Hello World!')
 })
+// app.use(notFoundMiddleware)
 export default app

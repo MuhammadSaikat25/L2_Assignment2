@@ -7,10 +7,11 @@ export function notFoundMiddleware(
   next: NextFunction
 ) {
   console.error(err.stack);
-
+  console.log(10)
   if (res.statusCode === 404) {
     res.status(404).json({ message: "Not Found" });
   } else {
     res.status(500).json({ message: "Internal Server Error" });
   }
+  next()
 }
