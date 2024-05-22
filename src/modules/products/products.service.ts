@@ -24,13 +24,21 @@ const getProductBYIdFromDB = async (id: string) => {
 };
 // !service for delete a single products by id
 const deleteProductByIdFromDB = async (id: string) => {
-  const result = await productModel.deleteOne({ _id:id });
+  const result = await productModel.deleteOne({ _id: id });
   return result;
 };
-
+const updateProductById = async (id: string, data: any) => {
+  const result = await productModel.findByIdAndUpdate(id, data, {
+    new: true,
+    runValidators: true,
+    overwrite: true,
+  });
+  return result
+};
 export const productService = {
   postAProductsInToDB,
   getAllProductsFromDB,
   getProductBYIdFromDB,
   deleteProductByIdFromDB,
+  updateProductById,
 };

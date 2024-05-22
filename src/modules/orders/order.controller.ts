@@ -31,7 +31,21 @@ const postOrder = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
-
+//! get all email
+const getAllOrder = async (req: Request, res: Response) => {
+  try {
+    const email = req.query.email;
+    const result = await orderService.getAllOrderFromDB(email as string);
+    res.status(200).json({
+      success: true,
+      message: "Orders fetched successfully for user email!",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const orderController = {
   postOrder,
+  getAllOrder
 };
