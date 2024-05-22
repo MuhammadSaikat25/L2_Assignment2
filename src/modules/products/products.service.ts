@@ -17,8 +17,13 @@ const getAllProductsFromDB = async (searchTerm: String) => {
   const result = await productModel.find();
   return result;
 };
-
+// !service fot getting a single products by id 
+const getProductBYIdFromDB=async(id:string)=>{
+    const result=await productModel.findById(id)
+    return result
+}
 export const productService = {
   postAProductsInToDB,
   getAllProductsFromDB,
+  getProductBYIdFromDB
 };

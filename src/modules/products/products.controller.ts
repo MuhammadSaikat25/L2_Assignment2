@@ -31,7 +31,23 @@ const getAllProducts = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
+// ! get product by id
+const getProductById = async (req: Request, res: Response) => {
+  try {
+    const id = req.params.productId;
+    const result = await productService.getProductBYIdFromDB(id);
+
+    res.status(200).json({
+      success: true,
+      message: "Product updated successfully!",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const productController = {
   postProduct,
   getAllProducts,
+  getProductById,
 };
