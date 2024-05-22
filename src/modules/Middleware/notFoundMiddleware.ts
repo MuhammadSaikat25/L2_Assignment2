@@ -1,7 +1,16 @@
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from "express";
 
-const notFoundMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  res.status(404).json({success:false, message: 'Route not found' });
-};
+export function notFoundMiddleware(
+  err: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  console.error(err.stack);
 
-export default notFoundMiddleware;
+  if (res.statusCode === 404) {
+    res.status(404).json({ message: "Not Found" });
+  } else {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+}
