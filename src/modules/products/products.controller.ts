@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 import { productService } from "./products.service";
+import productValidateSchema from "./products.validation";
 
 //!  Post a new product controller
 const postProduct = async (req: Request, res: Response) => {
   try {
     const body = req.body;
+    const {error,value}=productValidateSchema.validate(body)
     const result = await productService.postAProductsInToDB(body);
     res.status(200).json({
       success: true,
