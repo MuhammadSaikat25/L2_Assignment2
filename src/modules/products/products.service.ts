@@ -17,13 +17,20 @@ const getAllProductsFromDB = async (searchTerm: String) => {
   const result = await productModel.find();
   return result;
 };
-// !service fot getting a single products by id 
-const getProductBYIdFromDB=async(id:string)=>{
-    const result=await productModel.findById(id)
-    return result
-}
+// !service for getting a single products by id
+const getProductBYIdFromDB = async (id: string) => {
+  const result = await productModel.findById(id);
+  return result;
+};
+// !service for delete a single products by id
+const deleteProductByIdFromDB = async (id: string) => {
+  const result = await productModel.deleteOne({ _id:id });
+  return result;
+};
+
 export const productService = {
   postAProductsInToDB,
   getAllProductsFromDB,
-  getProductBYIdFromDB
+  getProductBYIdFromDB,
+  deleteProductByIdFromDB,
 };
