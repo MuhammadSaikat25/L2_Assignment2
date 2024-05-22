@@ -12,6 +12,11 @@ const postProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
+    res.status(500).json({
+      success:false,
+      message:'Please provide correct value',
+      data:null
+    })
     console.log(error);
   }
 };
@@ -61,6 +66,7 @@ const deleteProductById = async (req: Request, res: Response) => {
   }
 };
 
+// ! update product
 const updateProduct=async(req:Request,res:Response)=>{
   try {
     const id=req.params.productId
