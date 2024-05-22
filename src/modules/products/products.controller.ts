@@ -39,7 +39,7 @@ const getProductById = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "Product updated successfully!",
+      message: "Product fetched  successfully!",
       data: result,
     });
   } catch (error) {
