@@ -6,5 +6,6 @@ const route=express.Router()
 
 
 route.post("/products",productController.postProduct)
+route.get("/products",productController.getAllProducts)
 
 export const productRoutes = route;

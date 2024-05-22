@@ -15,7 +15,23 @@ const postProduct = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
-
+// ! get all products
+const getAllProducts = async (req: Request, res: Response) => {
+  try {
+    const searchTerm = req.query.searchTerm;
+    const result = await productService.getAllProductsFromDB(
+      searchTerm as string
+    );
+    res.status(200).json({
+      success: true,
+      message: `Products matching search term ${searchTerm} fetched successfully!`,
+      data: result,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const productController = {
   postProduct,
+  getAllProducts,
 };
